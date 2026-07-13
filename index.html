@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email App</title>
+</head>
+<body>
+
+<h2>Save Email</h2>
+
+<input type="email" id="email" placeholder="Enter Email">
+<button onclick="saveEmail()">Save</button>
+
+<hr>
+
+<h3>Saved Emails</h3>
+
+<ul id="list"></ul>
+
+<script>
+
+async function loadEmails(){
+
+    const res = await fetch("http://localhost:3000/emails");
+
+    const data = await res.json();
+
+    let html = "";
+
+    data.forEach(item=>{
+        html += `<li>${item.email}</li>`;
+    });
+
+    document.getElementById("list").innerHTML = html;
+}
+
+async function saveEmail(){
+
+    const email = document.getElementById("email").value;
+
+    await fetch("http://localhost:3000/save",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({email})
+    });
+
+    document.getElementById("email").value="";
+
+    loadEmails();
+}
+
+// Page load hote hi database se data fetch hoga
+loadEmails();
+
+</script>
+
+</body>
+</html>
