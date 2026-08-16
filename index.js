@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Hello World from Github Actions"
+        message: "Hello World from Github Actions..."
     });
 });
 // Save Email
