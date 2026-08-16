@@ -29,5 +29,5 @@ jobs:
             npm install
 
             echo "Restarting application..."
-            npm run dev
+            pm2 restart my-email-app || pm2 start index.js --name my-email-app
             echo "Deployment completed!"
