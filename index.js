@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Hello World from Github Actions..... . It worked... npm run dev instead of pm2 used."
+        message: "Hello World from Github Actions..... . It worked... npm run dev instead of pm2 used. npm run dev didn't worked"
     });
 });
 // Save Email
